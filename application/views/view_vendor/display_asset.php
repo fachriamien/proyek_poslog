@@ -121,7 +121,7 @@
 
                                                     <form action="<?= base_url('index.php/vendor/display_asset/add_kendaraan'); ?>" method="post">
                                                         <div class="modal-body">
-
+                                                            
                                                             <div class="form-group">
                                                                 <select name="vendor_id" id="vendor_id" class="form-control">
                                                                     <option value="" selected="" disabled>Select Vendor</option>
@@ -131,36 +131,38 @@
                                                                 </select>
                                                             </div>
 
+                                                            <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id = $this->session->userdata('user_id'); ?>">
+
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="kendaraan_jenis" name="kendaraan_jenis" placeholder="Jenis Kendaraan">
+                                                                <input type="text" class="form-control" id="kendaraan_jenis" name="kendaraan_jenis" placeholder="Jenis Kendaraan" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="kendaraan_merk" name="kendaraan_merk" placeholder="Merk">
+                                                                <input type="text" class="form-control" id="kendaraan_merk" name="kendaraan_merk" placeholder="Merk" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="number" class="form-control" id="kendaraan_qty" name="kendaraan_qty" placeholder="Qty">
+                                                                <input type="number" class="form-control" id="kendaraan_qty" name="kendaraan_qty" placeholder="Qty" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="number" class="form-control" id="kendaraan_tahun" name="kendaraan_tahun" placeholder="Tahun">
+                                                                <input type="number" class="form-control" id="kendaraan_tahun" name="kendaraan_tahun" placeholder="Tahun" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="kendaraan_type" name="kendaraan_type" placeholder="Type">
+                                                                <input type="text" class="form-control" id="kendaraan_type" name="kendaraan_type" placeholder="Type" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="number" class="form-control" id="kendaraan_payload" name="kendaraan_payload" placeholder="Payload">
+                                                                <input type="number" class="form-control" id="kendaraan_payload" name="kendaraan_payload" placeholder="Payload" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="kendaraan_status" name="kendaraan_status" placeholder="Status">
+                                                                <input type="text" class="form-control" id="kendaraan_status" name="kendaraan_status" placeholder="Status" required>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <input type="date" class="form-control" id="kendaraan_services_terakhir" name="kendaraan_services_terakhir" placeholder="">
+                                                                <input type="date" class="form-control" id="kendaraan_services_terakhir" name="kendaraan_services_terakhir" placeholder="" required>
                                                             </div>
 
                                                         </div>
@@ -198,42 +200,42 @@
                                                             
                                                             <div class="form-group">
                                                                 <label>Jenis Kendaraan</label>
-                                                                <input type="text" class="form-control" id="kendaraan_jenis" name="kendaraan_jenis" value="<?= $k['kendaraan_jenis']; ?>">
+                                                                <input type="text" class="form-control" id="kendaraan_jenis" name="kendaraan_jenis" required value="<?= $k['kendaraan_jenis']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Merk</label>
-                                                                <input type="text" class="form-control" id="kendaraan_merk" name="kendaraan_merk" value="<?= $k['kendaraan_merk']; ?>">
+                                                                <input type="text" class="form-control" id="kendaraan_merk" name="kendaraan_merk" required value="<?= $k['kendaraan_merk']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Qty</label>
-                                                                <input type="number" class="form-control" id="kendaraan_qty" name="kendaraan_qty" value="<?= $k['kendaraan_qty']; ?>">
+                                                                <input type="number" class="form-control" id="kendaraan_qty" name="kendaraan_qty" required value="<?= $k['kendaraan_qty']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Tahun</label>
-                                                                <input type="number" class="form-control" id="kendaraan_tahun" name="kendaraan_tahun" value="<?= $k['kendaraan_tahun']; ?>">
+                                                                <input type="number" class="form-control" id="kendaraan_tahun" name="kendaraan_tahun" required value="<?= $k['kendaraan_tahun']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Type</label>
-                                                                <input type="text" class="form-control" id="kendaraan_type" name="kendaraan_type" value="<?= $k['kendaraan_type']; ?>">
+                                                                <input type="text" class="form-control" id="kendaraan_type" name="kendaraan_type" required value="<?= $k['kendaraan_type']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Payload</label>
-                                                                <input type="number" class="form-control" id="kendaraan_payload" name="kendaraan_payload" value="<?= $k['kendaraan_payload']; ?>">
+                                                                <input type="number" class="form-control" id="kendaraan_payload" required name="kendaraan_payload" value="<?= $k['kendaraan_payload']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Status</label>
-                                                                <input type="text" class="form-control" id="kendaraan_status" name="kendaraan_status" value="<?= $k['kendaraan_status']; ?>">
+                                                                <input type="text" class="form-control" id="kendaraan_status" name="kendaraan_status" required value="<?= $k['kendaraan_status']; ?>">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label>Kendaraan Services Terakhir</label>
-                                                                <input type="date" class="form-control" id="kendaraan_services_terakhir" name="kendaraan_services_terakhir" value="<?= $k['kendaraan_services_terakhir']; ?>">
+                                                                <input type="date" class="form-control" id="kendaraan_services_terakhir" name="kendaraan_services_terakhir" required value="<?= $k['kendaraan_services_terakhir']; ?>">
                                                             </div>
 
                                                         </div>
@@ -350,16 +352,18 @@
                                                         </select>
                                                     </div>
 
+                                                    <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id = $this->session->userdata('user_id'); ?>">
+
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="general_jenis_asset" name="general_jenis_asset" placeholder="Jenis Asset">
+                                                        <input type="text" class="form-control" id="general_jenis_asset" name="general_jenis_asset" placeholder="Jenis Asset" required>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input type="number" class="form-control" id="general_qty" name="general_qty" placeholder="Qty">
+                                                        <input type="number" class="form-control" id="general_qty" name="general_qty" placeholder="Qty" required>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="general_status_kepemilikan" name="general_status_kepemilikan" placeholder="Status Kepemilikan">
+                                                        <input type="text" class="form-control" id="general_status_kepemilikan" name="general_status_kepemilikan" placeholder="Status Kepemilikan" required>
                                                     </div>
 
                                                 </div>
@@ -397,17 +401,17 @@
                                                     
                                                     <div class="form-group">
                                                         <label>Jenis Asset</label>
-                                                        <input type="text" class="form-control" id="general_jenis_asset" name="general_jenis_asset" value="<?= $g['general_jenis_asset']; ?>">
+                                                        <input type="text" class="form-control" id="general_jenis_asset" name="general_jenis_asset" required value="<?= $g['general_jenis_asset']; ?>">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label>Qty</label>
-                                                        <input type="number" class="form-control" id="general_qty" name="general_qty" value="<?= $g['general_qty']; ?>">
+                                                        <input type="number" class="form-control" id="general_qty" name="general_qty" required value="<?= $g['general_qty']; ?>">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label>Status Kepemilikan</label>
-                                                        <input type="text" class="form-control" id="general_status_kepemilikan" name="general_status_kepemilikan" value="<?= $g['general_status_kepemilikan']; ?>">
+                                                        <input type="text" class="form-control" id="general_status_kepemilikan" name="general_status_kepemilikan" required value="<?= $g['general_status_kepemilikan']; ?>">
                                                     </div>
 
                                                 </div>
@@ -528,16 +532,18 @@
                                                             </select>
                                                         </div>
 
+                                                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id = $this->session->userdata('user_id'); ?>">
+
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" id="sertifikasi_jenis" name="sertifikasi_jenis" placeholder="Jenis Sertifikasi">
+                                                            <input type="text" class="form-control" id="sertifikasi_jenis" name="sertifikasi_jenis" placeholder="Jenis Sertifikasi" required>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="number" class="form-control" id="sertifikasi_tahun" name="sertifikasi_tahun" placeholder="Tahun">
+                                                            <input type="number" class="form-control" id="sertifikasi_tahun" name="sertifikasi_tahun" placeholder="Tahun" required>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="number" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" placeholder="Nomor">
+                                                            <input type="number" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" placeholder="Nomor" required>
                                                         </div>
 
                                                         <div class=" custom-file">
@@ -583,28 +589,18 @@
                                                         
                                                         <div class="form-group">
                                                             <label>Jenis Sertifikasi</label>
-                                                            <input type="text" class="form-control" id="sertifikasi_jenis" name="sertifikasi_jenis" value="<?= $s['sertifikasi_jenis']; ?>">
+                                                            <input type="text" class="form-control" id="sertifikasi_jenis" name="sertifikasi_jenis" required value="<?= $s['sertifikasi_jenis']; ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label>Tahun</label>
-                                                            <input type="number" class="form-control" id="sertifikasi_tahun" name="sertifikasi_tahun" value="<?= $s['sertifikasi_tahun']; ?>">
+                                                            <input type="number" class="form-control" id="sertifikasi_tahun" name="sertifikasi_tahun" required value="<?= $s['sertifikasi_tahun']; ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label>Nomor</label>
-                                                            <input type="number" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" value="<?= $s['sertifikasi_nomor']; ?>">
+                                                            <input type="number" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" required value="<?= $s['sertifikasi_nomor']; ?>">
                                                         </div>
-
-                                                        <!-- <div class="file-upload-inner file-upload-inner-right ts-forms">
-                                                                        <div class="input append-small-btn">
-                                                                            <div class="file-button">
-                                                                                Browse
-                                                                                <input type="file" id="sertifikasi_file" name="sertifikasi_file" onchange="document.getElementById('append-small-btn').value = this.value;">
-                                                                            </div>
-                                                                            <input type="text" id="append-small-btn" placeholder="no file selected">
-                                                                        </div>
-                                                                    </div> -->
 
                                                         <div class=" custom-file">
                                                         <label class="custom-file-label" for="customFile">Choose file</label>
@@ -632,8 +628,16 @@
         </div>
     </div>
     <br>
+
+    <?php echo form_open_multipart('vendor/display_asset/update_status'); ?>
+
+    <?php foreach($vendor as $v) : ?>
+      <input type="hidden" id="vendor_id" name="vendor_id" value="<?= $v['vendor_id']; ?>">
+    <?php endforeach; ?>
+
     <center>
-    <a href="<?= base_url('index.php/vendor/dashboard/'); ?>" class="btn btn-custon-rounded-four btn-success">Complete!</a>
+    <button type="submit" class="pull-right btn btn-primary">Complete!</button>
     </center>
+    </form>
 </div>
 <!-- Basic Form End-->

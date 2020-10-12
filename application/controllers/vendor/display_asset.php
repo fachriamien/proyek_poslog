@@ -7,6 +7,7 @@ class display_asset extends CI_Controller
         parent::__construct();
         $this->load->helper('form');
         $this->load->model('models_vendor/displayasset_model', 'vendor');
+        $this->load->library('session');
 
         if ($this->session->userdata('status_login') != "4V050oXlAMwyba8kkr5Q") {
             redirect(base_url("login"));
@@ -18,10 +19,11 @@ class display_asset extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user_id = $this->session->userdata('user_id');
 
-        $data['kendaraan'] = $this->vendor->getAssetKendaraan();
-        $data['general'] = $this->vendor->getGeneralAsset();
-        $data['sertifikasi'] = $this->vendor->getSertifikasi();
+        $data['kendaraan'] = $this->vendor->getAssetKendaraan($user_id);
+        $data['general'] = $this->vendor->getGeneralAsset($user_id);
+        $data['sertifikasi'] = $this->vendor->getSertifikasi($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         $this->load->view('view_vendor/header');
@@ -32,8 +34,9 @@ class display_asset extends CI_Controller
     public function add_kendaraan()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user_id = $this->session->userdata('user_id');
 
-        $data['kendaraan'] = $this->vendor->getAssetKendaraan();
+        $data['kendaraan'] = $this->vendor->getAssetKendaraan($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         // $data['test'] = $this->db->get('vendor')->result_array();
@@ -53,6 +56,7 @@ class display_asset extends CI_Controller
         } else {
             $data = [
                 'vendor_id' => $this->input->post('vendor_id'),
+                'user_id' => $this->input->post('user_id'),
                 'kendaraan_jenis' => $this->input->post('kendaraan_jenis'),
                 'kendaraan_merk' => $this->input->post('kendaraan_merk'),
                 'kendaraan_qty' => $this->input->post('kendaraan_qty'),
@@ -61,7 +65,7 @@ class display_asset extends CI_Controller
                 'kendaraan_payload' => $this->input->post('kendaraan_payload'),
                 'kendaraan_status' => $this->input->post('kendaraan_status'),
                 'kendaraan_services_terakhir' => $this->input->post('kendaraan_services_terakhir')
-            ];
+            ];     
             // var_dump($data); die;
 
             $this->db->insert('asset_kendaraan', $data);
@@ -74,7 +78,7 @@ class display_asset extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['kendaraan'] = $this->vendor->getAssetKendaraan();
+        $data['kendaraan'] = $this->vendor->getAssetKendaraan($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         // $data['test'] = $this->db->get('vendor')->result_array();
@@ -127,8 +131,9 @@ class display_asset extends CI_Controller
     public function add_generalasset()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user_id = $this->session->userdata('user_id');
 
-        $data['general'] = $this->vendor->getGeneralAsset();
+        $data['general'] = $this->vendor->getGeneralAsset($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         $this->form_validation->set_rules('general_jenis_asset', 'Jenis Asset', 'required');
@@ -141,6 +146,7 @@ class display_asset extends CI_Controller
         } else {
             $data = [
                 'vendor_id' => $this->input->post('vendor_id'),
+                'user_id' => $this->input->post('user_id'),
                 'general_jenis_asset' => $this->input->post('general_jenis_asset'),
                 'general_qty' => $this->input->post('general_qty'),
                 'general_status_kepemilikan' => $this->input->post('general_status_kepemilikan'),
@@ -156,8 +162,9 @@ class display_asset extends CI_Controller
     public function edit_generalasset()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user_id = $this->session->userdata('user_id');
 
-        $data['general'] = $this->vendor->getGeneralAsset();
+        $data['general'] = $this->vendor->getGeneralAsset($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         $this->form_validation->set_rules('general_jenis_asset', 'Jenis Asset', 'required');
@@ -198,8 +205,9 @@ class display_asset extends CI_Controller
     public function add_sertifikasi()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user_id = $this->session->userdata('user_id');
 
-        $data['general'] = $this->vendor->getSertifikasi();
+        $data['general'] = $this->vendor->getSertifikasi($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         $this->form_validation->set_rules('sertifikasi_jenis', 'Jenis Sertifikasi', 'required');
@@ -215,6 +223,7 @@ class display_asset extends CI_Controller
             $image = $upload['file']['file_name'];
             $data = [
                 'vendor_id' => $this->input->post('vendor_id'),
+                'user_id' => $this->input->post('user_id'),
                 'sertifikasi_jenis' => $this->input->post('sertifikasi_jenis'),
                 'sertifikasi_tahun' => $this->input->post('sertifikasi_tahun'),
                 'sertifikasi_nomor' => $this->input->post('sertifikasi_nomor'),
@@ -231,8 +240,9 @@ class display_asset extends CI_Controller
     public function edit_sertifikasi()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user_id = $this->session->userdata('user_id');
 
-        $data['general'] = $this->vendor->getSertifikasi();
+        $data['general'] = $this->vendor->getSertifikasi($user_id);
         $data['vendor'] = $this->vendor->getVendor();
 
         $this->form_validation->set_rules('sertifikasi_jenis', 'Jenis Sertifikasi', 'required');
@@ -261,7 +271,7 @@ class display_asset extends CI_Controller
                 'sertifikasi_nomor' => $this->input->post('sertifikasi_nomor'),
                 'sertifikasi_file' => $image
             ];
-            var_dump($data); die;
+            // var_dump($data); die;
 
             $this->db->where('sertifikasi_id', $id);
             $this->db->update('asset_sertifikasi', $data);
@@ -277,6 +287,32 @@ class display_asset extends CI_Controller
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Asset Sertifikasi berhasil dihapus!</div>');
 
         redirect('/vendor/display_asset');
+    }
+
+    public function update_status() { 
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['kendaraan'] = $this->vendor->getAssetKendaraan($user_id);
+        $data['general'] = $this->vendor->getGeneralAsset($user_id);
+        $data['sertifikasi'] = $this->vendor->getSertifikasi($user_id);
+        $data['vendor'] = $this->vendor->getVendor();
+
+        $this->load->view('view_vendor/header');
+        $this->load->view('view_vendor/display_asset', $data);
+        $this->load->view('view_vendor/footer');
+
+        $id = $this->input->post('vendor_id');
+        $data = [
+            'vendor_id' => $this->input->post('vendor_id'),
+            'vendor_remark' => 'BELUM TERVERIFIKASI',
+            'vendor_status' => '3'
+        ];
+
+        // var_dump($data); die;
+
+        $this->db->where('vendor_id', $id);
+        $this->db->update('vendor', $data);
+        redirect('/vendor/dashboard');
     }
 }
 
