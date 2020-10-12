@@ -86,7 +86,11 @@ class registration_model extends CI_Model
     
     function get_registration_data_vendor(){
         $user_id = $this->session->userdata("user_id");
-		return $this->db->query("SELECT * FROM vendor WHERE user_id = '$user_id'")->row();
+		return $this->db->query("SELECT v.vendor_name, v.vendor_desc, v.address, v.postcode, v.vendor_email, v.vendor_phone, v.vendor_fax, v.vendor_website, bf.business_field_name AS 'bisnis_utama', c.category_name, cl.class_name FROM vendor v 
+        JOIN business_field bf ON bf.business_field_id = v.business_field_id
+        LEFT JOIN category c ON c.category_id = v.category_id
+        JOIN classification cl ON cl.class_id = v.class_id
+        WHERE user_id = '$user_id'")->row();
     }
     
     function get_registration_data_pic(){

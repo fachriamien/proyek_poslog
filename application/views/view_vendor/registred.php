@@ -245,23 +245,27 @@
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
-                                                            <select id="business_field"
+                                                            <select readonly
                                                                 class="form-control custom-select-value"
                                                                 name="business_field">
+                                                                <option><?php echo $vendor->bisnis_utama; ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="div_cat" class="form-group-inner">
+                                            <div <?php if($vendor->category_name == ""){
+                                                echo "style='display: none'";
+                                            } ?> class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
-                                                            <select id="category_business_field"
+                                                            <select readonly
                                                                 class="form-control custom-select-value"
                                                                 name="category_business_field">
+                                                                <option><?php echo $vendor->category_name; ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -275,9 +279,10 @@
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
-                                                            <select id="classification"
+                                                            <select readonly
                                                                 class="form-control custom-select-value"
                                                                 name="classification">
+                                                                <option><?php echo $vendor->class_name; ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
