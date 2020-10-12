@@ -18,6 +18,7 @@ class login extends CI_Controller
 			$username = $this->login_model->cek_login()->row()->username;
 			$cek_level = $this->login_model->cek_login()->row()->level_id;
 			$level_nama = $this->login_model->cek_login()->row()->level_name;
+			$vendor_id = $this->login_model->cek_login()->row()->vendor_id;
 
 			$nickname = explode(" ", $fullname);
 			$name = $nickname[0]." ".$nickname[1];
@@ -28,6 +29,7 @@ class login extends CI_Controller
 				'username' => $username,
 				'level'=> $cek_level,
 				'level_nama' => $level_nama,
+				'vendor_id' => $vendor_id,
 				'status_login' => "4V050oXlAMwyba8kkr5Q"
 			);
 

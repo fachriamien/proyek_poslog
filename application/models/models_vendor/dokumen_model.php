@@ -1,19 +1,8 @@
 <?php
-class dashboard_vendor_model extends CI_Model
+class dokumen_model extends CI_Model
 {
-    function dashboard(){
-        $userid = $this->session->userdata('user_id');
-
-        $tampil = $this->db->query("SELECT v.vendor_id, v.vendor_name, v.vendor_remark, v.vendor_status FROM vendor v 
-        JOIN user u ON v.user_id = u.user_id 
-        WHERE u.user_id = '$userid'");
-
-        return $tampil;
-    }
-
-    function cek_perbaikan($vendor_id){
-        $tampil = $this->db->query("SELECT * FROM document_type WHERE doc_type_id 
-        NOT IN (SELECT doc_type_id FROM document WHERE vendor_id = '$vendor_id')");
+    function get_dokumen_type(){
+        $tampil = $this->db->query("SELECT * FROM document_type WHERE doc_type_status = 1");
 
         if($tampil->num_rows() > 0)
         {
@@ -27,14 +16,30 @@ class dashboard_vendor_model extends CI_Model
         }
     }
 
-    function save_perbaikan(){
+    function get_dokumen_group(){
+        $tampil = $this->db->query("SELECT * FROM document_group WHERE doc_group_status = 1");
+
+        if($tampil->num_rows() > 0)
+        {
+            //perulangan untuk setiap data yang ditemukan
+            //akan diletakkan pada variabel $data
+            foreach($tampil->result() as $data)
+            {
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+
+    function save_dokumen(){
         $config['upload_path']          = '././assets/upload/';
-		$config['allowed_types']        = 'pdf';
+		$config['allowed_types']        = 'pdf|png';
 		$config['max_size']             = 2000;
 		$config['encrypt_name'] 		= true;
 		$this->load->library('upload',$config);
         $jumlah_berkas = count($_FILES['dokumen']['name']);
-        
+        // echo $jumlah_berkas;
+        // exit();
         $doc_type_id = $this->input->post('doc_type_id');
 		if (is_array($doc_type_id) || is_object($doc_type_id))
 		{
@@ -59,16 +64,16 @@ class dashboard_vendor_model extends CI_Model
                         $this->db->insert('document',$data);
                     }
                     $i++;
-                } else{
+                } else {
                     $i++;
                     continue;
                 }
+                
 			}
         }
-        $update = array('vendor_remark'=>"BELUM TERVERIFIKASI");
+        $update = array('vendor_remark'=>"BELUM TERVERIFIKASI", 'vendor_status'=>'2');
         $this->db->where('vendor_id', $this->input->post('vendor_id'));
 		$this->db->update('vendor', $update);
     }
-    
 }
 ?>

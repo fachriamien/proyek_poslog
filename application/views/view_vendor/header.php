@@ -81,7 +81,7 @@
                             <a href="<?php echo base_url() ?>index.php/vendor/registration" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-edit"></i> <span class="mini-dn">Registration</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url() ?>index.php/vendor/upload_documents" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-upload"></i> <span class="mini-dn">Upload Documents</span></a>
+                            <a href="<?php echo base_url() ?>index.php/vendor/upload_dokumen" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-upload"></i> <span class="mini-dn">Upload Documents</span></a>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo base_url() ?>index.php/vendor/display_asset" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-balance-scale"></i> <span class="mini-dn">Display Asset</span></a>
