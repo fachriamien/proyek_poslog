@@ -4,9 +4,9 @@ class dashboard_vendor_model extends CI_Model
     function dashboard(){
         $userid = $this->session->userdata('user_id');
 
-        $tampil = $this->db->query("SELECT v.vendor_id, v.vendor_name, v.vendor_remark FROM vendor v 
+        $tampil = $this->db->query("SELECT v.vendor_id, v.vendor_name, v.vendor_remark, v.vendor_status FROM vendor v 
         JOIN user u ON v.user_id = u.user_id 
-        WHERE u.user_id = '$userid' AND v.vendor_status = 1");
+        WHERE u.user_id = '$userid'");
 
         return $tampil;
     }

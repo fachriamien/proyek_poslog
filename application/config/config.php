@@ -24,7 +24,7 @@ define('DOCROOT', $_SERVER['DOCUMENT_ROOT'].'/proyek_poslog');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:80/proyek_poslog';
+$config['base_url'] = 'http://localhost:10/proyek_poslog';
 
 /*
 |--------------------------------------------------------------------------

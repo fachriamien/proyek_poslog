@@ -48,30 +48,39 @@
                                     <div class="all-form-element-inner">
                                         <form action="#">
                                             <div class="form-group-inner">
-                                                <h2><?php echo $hasil->vendor_name; ?></h2></br>
-                                                <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
+                                                <h2><?php echo $hasil->vendor_name; ?></h2>
                                                 <?php
+                                                if($hasil->vendor_status == 1){
+                                                ?>
+                                                    <label>Data belum lengkap, mohon lengkapi dokumen</label>
+                                                <?php
+                                                } else{
                                                     if($hasil->vendor_remark == "BELUM TERVERIFIKASI"){
-                                                    ?>
-                                                        <label>selamat data anda telah terrecord dalam sistem kami</br>
-                                                        dan sedang kami verifikasi</label>
-                                                    <?php
-                                                    } else if ($hasil->vendor_remark == "PERBAIKAN"){
-                                                    ?>
-                                                        <label>Mohon untuk melengkapi kekurangan data yang kami butuhkan</label>
-                                                        </br>
-                                                        <a href="<?php echo base_url() ?>index.php/vendor/dashboard/unggah_perbaikan/<?php echo $hasil->vendor_id;?>" 
-                                                        class="btn btn-sm btn-primary login-submit-cs"
-                                                                    >Click Here </a>
-                                                    <?php
-                                                    } else if($hasil->vendor_remark == "TERVERIFIKASI"){
-                                                    ?>
-                                                        <label>Selamat anda telah terdaftar sebagai rekanan perusahaan kami</label>
-                                                        </br>
-                                                        <a href="#" class="btn btn-sm btn-primary login-submit-cs"
-                                                                    >Click Here </a>
-                                                    <?php
+                                                        ?>
+                                                            <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
+                                                            <label>selamat data anda telah terrecord dalam sistem kami</br>
+                                                            dan sedang kami verifikasi</label>
+                                                        <?php
+                                                        } else if ($hasil->vendor_remark == "PERBAIKAN"){
+                                                        ?>
+                                                            <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
+                                                            <label>Mohon untuk melengkapi kekurangan data yang kami butuhkan</label>
+                                                            </br>
+                                                            <a href="<?php echo base_url() ?>index.php/vendor/dashboard/unggah_perbaikan/<?php echo $hasil->vendor_id;?>" 
+                                                            class="btn btn-sm btn-primary login-submit-cs"
+                                                                        >Click Here </a>
+                                                        <?php
+                                                        } else if($hasil->vendor_remark == "TERVERIFIKASI"){
+                                                        ?>
+                                                            <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
+                                                            <label>Selamat anda telah terdaftar sebagai rekanan perusahaan kami</label>
+                                                            </br>
+                                                            <a href="#" class="btn btn-sm btn-primary login-submit-cs"
+                                                                        >Click Here </a>
+                                                        <?php
                                                     }
+                                                }
+                                                    
                                                 ?>
                                             </div>
                                         </form>
