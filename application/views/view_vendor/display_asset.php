@@ -48,6 +48,7 @@
                                 <div class="col-lg-12">
                                     <div class="all-form-element-inner">
                                         <?= $this->session->flashdata('message'); ?>
+                                        <!-- <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div> -->
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="sparkline10-list shadow-reset mg-t-30">
@@ -243,9 +244,8 @@
                                                     </form>
                                                     </div>
                                                 </div>
-                                                </div>
-                                            <?php endforeach; ?>
-
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +258,6 @@
 </div>
 <br><br>
 <!-- Basic Form End-->
-
 <!-- Basic Form Start -->
 <div class="basic-form-area mg-b-15">
     <div class="container-fluid">
@@ -333,7 +332,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Tambah Asset Kendaraan</h5>
+                                                <h5 class="modal-title">Tambah Asset General</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -421,7 +420,6 @@
                                         </div>
                                         </div>
                                     <?php endforeach; ?>
-
                                     </div>
                                 </div>
                             </div>
@@ -478,6 +476,7 @@
                                                                         <th>Jenis</th>
                                                                         <th>Tahun</th>
                                                                         <th>Nomor</th>
+                                                                        <th>File Sertifikasi</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                 </thead>
@@ -490,9 +489,10 @@
                                                                         <td><?= $s['sertifikasi_jenis'] ?></td>
                                                                         <td><?= $s['sertifikasi_tahun'] ?></td>
                                                                         <td><?= $s['sertifikasi_nomor'] ?></td>
+                                                                        <td class="text-center"><img src="<?= sprintf("http://localhost/proyek_poslog/assets/upload/img_displayasset/%s", $s['sertifikasi_file']); ?>" width="66px" height="64px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-custon-rounded-four btn-warning" data-toggle="modal" data-target="#neweditSertifikasiAsset<?= $s['sertifikasi_id'] ?>">edit</a>
-                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_kendaraan/'.$s['sertifikasi_id']); ?>" class="btn btn-custon-rounded-four btn-danger">delete</a>
+                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_sertifikasiasset/'.$s['sertifikasi_id']); ?>" class="btn btn-custon-rounded-four btn-danger">delete</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $i++; ?>
@@ -509,13 +509,14 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Tambah Asset Kendaraan</h5>
+                                                    <h5 class="modal-title">Tambah Asset Sertifikasi</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
 
-                                                <form action="<?= base_url('index.php/vendor/display_asset/add_sertifikasi'); ?>" method="post">
+                                                <?php echo form_open_multipart('vendor/display_asset/add_sertifikasi'); ?>
+                                                <!-- <form action="<?= base_url('index.php/vendor/display_asset/add_sertifikasi'); ?>" method="post"> -->
                                                     <div class="modal-body">
 
                                                         <div class="form-group">
@@ -536,13 +537,18 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" placeholder="Nomor">
+                                                            <input type="number" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" placeholder="Nomor">
+                                                        </div>
+
+                                                        <div class=" custom-file">
+                                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                                            <input type="file" class="custom-file-input" id="sertifikasi_file" name="sertifikasi_file" placeholder="Image">
                                                         </div>
 
                                                     </div>
                                                     <div class="modal-footer bg-whitesmoke br">
                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Add Asset Kendaraan</button>
+                                                        <button type="submit" class="btn btn-primary">Add Asset Sertifikasi</button>
                                                     </div>
                                                 </form>
                                                 </div>
@@ -552,6 +558,7 @@
 
                                             <?php foreach ($sertifikasi as $s) :
                                             $id=$s['sertifikasi_id'];
+                                            $file=$s['sertifikasi_file'];
                                             ?>
 
                                         <!-- Modal Edit -->
@@ -565,9 +572,11 @@
                                                     </button>
                                                 </div>
 
-                                                <form action="<?= base_url('index.php/vendor/display_asset/edit_sertifikasi'); ?>" method="post">
+                                                <!-- <form action="<?= base_url('index.php/vendor/display_asset/edit_sertifikasi'); ?>" method="post"> -->
+                                                <?php echo form_open_multipart('vendor/display_asset/edit_sertifikasi'); ?>
                                                     <div class="modal-body">
-                                                    <input type="hidden" id="kendaraan_id" name="kendaraan_id" value="<?= $id; ?>">
+                                                    <input type="hidden" id="sertifikasi_id" name="sertifikasi_id" value="<?= $id; ?>">
+                                                    <input type="hidden" id="sertifikasi_file" name="sertifikasi_file" value="<?= $file; ?>">
                                                     <?php foreach($vendor as $v) : ?>
                                                         <input type="hidden" id="vendor_id" name="vendor_id" value="<?= $v['vendor_id']; ?>">
                                                     <?php endforeach; ?>
@@ -584,10 +593,24 @@
 
                                                         <div class="form-group">
                                                             <label>Nomor</label>
-                                                            <input type="text" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" value="<?= $s['sertifikasi_nomor']; ?>">
+                                                            <input type="number" class="form-control" id="sertifikasi_nomor" name="sertifikasi_nomor" value="<?= $s['sertifikasi_nomor']; ?>">
                                                         </div>
 
-                                                        
+                                                        <!-- <div class="file-upload-inner file-upload-inner-right ts-forms">
+                                                                        <div class="input append-small-btn">
+                                                                            <div class="file-button">
+                                                                                Browse
+                                                                                <input type="file" id="sertifikasi_file" name="sertifikasi_file" onchange="document.getElementById('append-small-btn').value = this.value;">
+                                                                            </div>
+                                                                            <input type="text" id="append-small-btn" placeholder="no file selected">
+                                                                        </div>
+                                                                    </div> -->
+
+                                                        <div class=" custom-file">
+                                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                                            <input type="file" class="custom-file-input" id="sertifikasi_file" name="sertifikasi_file" placeholder="Image">
+                                                        </div>
+                                                    
                                                     </div>
                                                     <div class="modal-footer bg-whitesmoke br">
                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -598,9 +621,7 @@
                                             </div>
                                             </div>
                                         <?php endforeach; ?>
-
-
-
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -610,5 +631,9 @@
             </div>
         </div>
     </div>
+    <br>
+    <center>
+    <a href="<?= base_url('index.php/vendor/dashboard/'); ?>" class="btn btn-custon-rounded-four btn-success">Complete!</a>
+    </center>
 </div>
 <!-- Basic Form End-->

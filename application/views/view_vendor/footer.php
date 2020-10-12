@@ -37,6 +37,19 @@
 
 </html>
 
+<!-- Custom Files Upload -->
+    <script>
+        $('.custom-file-input').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+     </script>
+<!-- end -->
+
+<!-- Swal Delete @raflyid -->
+    <script src="<?= base_url('assets/'); ?>Template_Admin/sweetalert2/raflyid_swal.js"></script>
+<!-- end -->
+
 <script type="text/javascript">
 $(document).ready(function() {
     $('#div_cat').hide();

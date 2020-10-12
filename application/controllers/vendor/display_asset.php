@@ -66,11 +66,11 @@ class display_asset extends CI_Controller
 
             $this->db->insert('asset_kendaraan', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset berhasil ditambahkan!</div>');
-            redirect('index.php/vendor/display_asset');
+            redirect('/vendor/display_asset');
         }
     }
 
-    public function edit_kendaraan() 
+    public function edit_kendaraan()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -109,17 +109,18 @@ class display_asset extends CI_Controller
             $this->db->where('kendaraan_id', $id);
             $this->db->update('asset_kendaraan', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset berhasil diubah!</div>');
-            redirect('index.php/vendor/display_asset');
+            redirect('/vendor/display_asset');
         }
     }
 
-     public function delete_kendaraan() {
+    public function delete_kendaraan()
+    {
         $id = $this->uri->segment(4);
-        $this->db->where('kendaraan_id',$id);
+        $this->db->where('kendaraan_id', $id);
         $this->db->delete('asset_kendaraan');
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Asset berhasil dihapus!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset berhasil dihapus!</div>');
 
-        redirect('index.php/vendor/display_asset');
+        redirect('/vendor/display_asset');
     }
     //end asset kendaraan
 
@@ -148,7 +149,7 @@ class display_asset extends CI_Controller
 
             $this->db->insert('asset_general', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset General berhasil ditambahkan!</div>');
-            redirect('index.php/vendor/display_asset');
+            redirect('/vendor/display_asset');
         }
     }
 
@@ -179,17 +180,18 @@ class display_asset extends CI_Controller
             $this->db->where('general_id', $id);
             $this->db->update('asset_general', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset General berhasil diubah!</div>');
-            redirect('index.php/vendor/display_asset');
+            redirect('/vendor/display_asset');
         }
     }
 
-    public function delete_generalasset() {
+    public function delete_generalasset()
+    {
         $id = $this->uri->segment(4);
-        $this->db->where('general_id',$id);
+        $this->db->where('general_id', $id);
         $this->db->delete('asset_general');
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Asset berhasil dihapus!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset berhasil dihapus!</div>');
 
-        redirect('index.php/vendor/display_asset');
+        redirect('/vendor/display_asset');
     }
     //end asset general
 
@@ -197,7 +199,7 @@ class display_asset extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['general'] = $this->vendor->getGeneralAsset();
+        $data['general'] = $this->vendor->getSertifikasi();
         $data['vendor'] = $this->vendor->getVendor();
 
         $this->form_validation->set_rules('sertifikasi_jenis', 'Jenis Sertifikasi', 'required');
@@ -208,18 +210,73 @@ class display_asset extends CI_Controller
             $this->load->view('view_vendor/display_asset', $data);
             $this->load->view('view_vendor/footer');
         } else {
+            // $serverip = gethostbyname(gethostname());
+            $upload = $this->vendor->uploadImage();
+            $image = $upload['file']['file_name'];
             $data = [
                 'vendor_id' => $this->input->post('vendor_id'),
                 'sertifikasi_jenis' => $this->input->post('sertifikasi_jenis'),
                 'sertifikasi_tahun' => $this->input->post('sertifikasi_tahun'),
                 'sertifikasi_nomor' => $this->input->post('sertifikasi_nomor'),
+                'sertifikasi_file' => $image
             ];
             // var_dump($data); die;
 
             $this->db->insert('asset_sertifikasi', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset Sertifikasi berhasil ditambahkan!</div>');
-            redirect('index.php/vendor/display_asset');
+            redirect('/vendor/display_asset');
         }
+    }
+
+    public function edit_sertifikasi()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['general'] = $this->vendor->getSertifikasi();
+        $data['vendor'] = $this->vendor->getVendor();
+
+        $this->form_validation->set_rules('sertifikasi_jenis', 'Jenis Sertifikasi', 'required');
+        $this->form_validation->set_rules('sertifikasi_tahun', 'Qty', 'required');
+        $this->form_validation->set_rules('sertifikasi_nomor', 'Nomor', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('view_vendor/header');
+            $this->load->view('view_vendor/display_asset', $data);
+            $this->load->view('view_vendor/footer');
+        } else {
+            $id = $this->input->post('sertifikasi_id');
+            $upload = $this->vendor->uploadImage();
+            if (empty($upload['file']['file_name'])) {
+                      $target_file = $this->vendor->get_image($id);
+                      $image = $target_file->sertifikasi_file;
+                  } else {
+                      $target_file = $this->vendor->get_image($id);
+                      $file = './assets/upload/img_displayasset/' . $target_file->sertifikasi_file;
+                      unlink($file);
+                      $image = $upload['file']['file_name'];
+                  }
+                $data = [
+                'vendor_id' => $this->input->post('vendor_id'),
+                'sertifikasi_jenis' => $this->input->post('sertifikasi_jenis'),
+                'sertifikasi_tahun' => $this->input->post('sertifikasi_tahun'),
+                'sertifikasi_nomor' => $this->input->post('sertifikasi_nomor'),
+                'sertifikasi_file' => $image
+            ];
+            var_dump($data); die;
+
+            $this->db->where('sertifikasi_id', $id);
+            $this->db->update('asset_sertifikasi', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Asset Sertifikasi berhasil diubah!</div>');
+            redirect('/vendor/display_asset');
+        }
+    }
+
+     public function delete_sertifikasiasset() {
+        $id = $this->uri->segment(4);
+        $this->db->where('sertifikasi_id',$id);
+        $this->db->delete('asset_sertifikasi');
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Asset Sertifikasi berhasil dihapus!</div>');
+
+        redirect('/vendor/display_asset');
     }
 }
 
