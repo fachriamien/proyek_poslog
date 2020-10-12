@@ -50,11 +50,11 @@
                                             <div class="form-group-inner">
                                                 <h2><?php echo $hasil->vendor_name; ?></h2>
                                                 <?php
-                                                if($hasil->vendor_status == 1){
+                                                if($hasil->vendor_status != 3){
                                                 ?>
                                                     <label>Data belum lengkap, mohon lengkapi dokumen</label>
                                                 <?php
-                                                } else{
+                                                } else if ($hasil->vendor_status == 3){
                                                     if($hasil->vendor_remark == "BELUM TERVERIFIKASI"){
                                                         ?>
                                                             <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
