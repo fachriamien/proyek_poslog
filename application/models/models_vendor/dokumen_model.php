@@ -31,6 +31,16 @@ class dokumen_model extends CI_Model
         }
     }
 
+    function get_vendor(){
+        $userid = $this->session->userdata('user_id');
+
+        $tampil = $this->db->query("SELECT v.vendor_id, v.vendor_name, v.vendor_remark, v.vendor_status FROM vendor v 
+        JOIN user u ON v.user_id = u.user_id 
+        WHERE u.user_id = '$userid'");
+
+        return $tampil;
+    }
+
     function save_dokumen(){
         $config['upload_path']          = '././assets/upload/';
 		$config['allowed_types']        = 'pdf|png';

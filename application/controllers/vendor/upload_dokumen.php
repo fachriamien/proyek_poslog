@@ -13,9 +13,9 @@ class upload_dokumen extends CI_Controller
     }
     
     function index(){
-        $this->load->model('models_vendor/dokumen_model');
+		$this->load->model('models_vendor/dokumen_model');
 
-        $data['vendor_id'] =$this->session->userdata('vendor_id');
+		$data['hasil'] = $this->dokumen_model->get_vendor()->row();
 		
         $data['type'] = $this->dokumen_model->get_dokumen_type();
         $data['group'] = $this->dokumen_model->get_dokumen_group();

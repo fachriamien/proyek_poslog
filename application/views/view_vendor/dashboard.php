@@ -48,6 +48,9 @@
                                     <div class="all-form-element-inner">
                                         <form action="#">
                                             <div class="form-group-inner">
+                                            <?php
+                                            if(!empty($hasil)){
+                                            ?>
                                                 <h2><?php echo $hasil->vendor_name; ?></h2>
                                                 <?php
                                                 if($hasil->vendor_status != 3){
@@ -82,6 +85,15 @@
                                                 }
                                                     
                                                 ?>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <label>Silahkan lakukan registrasi Vendor</label>
+                                            <?php
+                                                
+                                            }
+                                            ?>
+                                                
                                             </div>
                                         </form>
                                     </div>

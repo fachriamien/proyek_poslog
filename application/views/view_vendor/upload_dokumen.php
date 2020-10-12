@@ -56,7 +56,7 @@
                                                         if(!empty($group))
                                                         {
                                                             ?>
-                                                            <input type="hidden" name="vendor_id" value="<?php echo $vendor_id; ?>"/>
+                                                            <input type="hidden" name="vendor_id" value="<?php echo $hasil->vendor_id; ?>"/>
                                                             <?php
                                                             foreach($group as $data)
                                                             {
