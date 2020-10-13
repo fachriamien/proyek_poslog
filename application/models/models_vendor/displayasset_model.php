@@ -2,10 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class displayasset_model extends CI_Model {
-  public function getAssetKendaraan() {
-    $query = "SELECT `asset_kendaraan`.*, `vendor`.`vendor_name`
-              FROM `asset_kendaraan` JOIN `vendor`
-              ON `vendor`.`vendor_id` = `asset_kendaraan`.`vendor_id`
+  public function getAssetKendaraan($user_id) {
+    $query = "SELECT asset_kendaraan.*, user.user_id, vendor.vendor_name
+              FROM asset_kendaraan 
+              LEFT JOIN vendor
+              ON vendor.vendor_id = asset_kendaraan.vendor_id
+              LEFT JOIN user
+              ON user.user_id = asset_kendaraan.user_id
+              WHERE user.user_id = '$user_id'
               ";
     return $this->db->query($query)->result_array();
   }
@@ -17,18 +21,26 @@ class displayasset_model extends CI_Model {
     return $this->db->query($query)->result_array();
   }
 
-  public function getGeneralAsset() {
-    $query = "SELECT `asset_general`.*, `vendor`.`vendor_name`
-              FROM `asset_general` JOIN `vendor`
-              ON `vendor`.`vendor_id` = `asset_general`.`vendor_id`
+  public function getGeneralAsset($user_id) {
+    $query = "SELECT asset_general.*, user.user_id, vendor.vendor_name
+              FROM asset_general 
+              LEFT JOIN vendor
+              ON vendor.vendor_id = asset_general.vendor_id
+              LEFT JOIN user
+              ON user.user_id = asset_general.user_id
+              WHERE user.user_id = '$user_id'
               ";
     return $this->db->query($query)->result_array();
   }
 
-  public function getSertifikasi(){
-    $query = "SELECT `asset_sertifikasi`.*, `vendor`.`vendor_name`
-              FROM `asset_sertifikasi` JOIN `vendor`
-              ON `vendor`.`vendor_id` = `asset_sertifikasi`.`vendor_id`
+  public function getSertifikasi($user_id){
+    $query = "SELECT asset_sertifikasi.*, vendor.vendor_name
+              FROM asset_sertifikasi 
+              LEFT JOIN vendor
+              ON vendor.vendor_id = asset_sertifikasi.vendor_id
+              LEFT JOIN user
+              ON user.user_id = asset_sertifikasi.user_id
+              WHERE user.user_id = '$user_id'
               ";
     return $this->db->query($query)->result_array();
   }
