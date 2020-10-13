@@ -53,9 +53,9 @@
                                             ?>
                                                 <h2><?php echo $hasil->vendor_name; ?></h2>
                                                 <?php
-                                                if($hasil->vendor_status != 3){
+                                                if($hasil->vendor_status == 2 || $hasil->vendor_status == 1){
                                                 ?>
-                                                    <label>Data belum lengkap, mohon lengkapi dokumen</label>
+                                                    <label>Data belum lengkap, mohon lengkapi dokumen dan asset</label>
                                                 <?php
                                                 } else if ($hasil->vendor_status == 3){
                                                     if($hasil->vendor_remark == "BELUM TERVERIFIKASI"){
@@ -64,7 +64,14 @@
                                                             <label>selamat data anda telah terrecord dalam sistem kami</br>
                                                             dan sedang kami verifikasi</label>
                                                         <?php
-                                                        } else if ($hasil->vendor_remark == "PERBAIKAN"){
+                                                        } 
+                                                } else if ($hasil->vendor_status == 4){
+                                                ?>
+                                                    <h3>STATUS : DALAM PROSES </h3></br>
+                                                    <label>Mohon untuk menunggu hasil verifikasi</label>
+                                                <?php
+                                                } else if($hasil->vendor_status == 5){
+                                                    if ($hasil->vendor_remark == "PERBAIKAN"){
                                                         ?>
                                                             <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
                                                             <label>Mohon untuk melengkapi kekurangan data yang kami butuhkan</label>
@@ -73,7 +80,7 @@
                                                             class="btn btn-sm btn-primary login-submit-cs"
                                                                         >Click Here </a>
                                                         <?php
-                                                        } else if($hasil->vendor_remark == "TERVERIFIKASI"){
+                                                    } else if($hasil->vendor_remark == "TERVERIFIKASI"){
                                                         ?>
                                                             <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
                                                             <label>Selamat anda telah terdaftar sebagai rekanan perusahaan kami</label>
@@ -82,17 +89,13 @@
                                                                         >Click Here </a>
                                                         <?php
                                                     }
-                                                }
-                                                    
-                                                ?>
-                                            <?php
+                                                } 
                                             } else {
-                                            ?>
-                                                <label>Silahkan lakukan registrasi Vendor</label>
-                                            <?php
-                                                
+                                                ?>
+                                                    <label>Silahkan lakukan registrasi Vendor</label>
+                                                <?php
                                             }
-                                            ?>
+                                                        ?>
                                                 
                                             </div>
                                         </form>

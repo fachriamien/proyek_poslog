@@ -14,15 +14,20 @@ class upload_dokumen extends CI_Controller
     
     function index(){
 		$this->load->model('models_vendor/dokumen_model');
+		$vendor_id = $this->dokumen_model->get_vendor()->row();
 
-		$data['hasil'] = $this->dokumen_model->get_vendor()->row();
-		
-        $data['type'] = $this->dokumen_model->get_dokumen_type();
-        $data['group'] = $this->dokumen_model->get_dokumen_group();
+		if($this->dokumen_model->get_validate_registed_or_not($vendor_id) == 0){
+			$data['hasil'] = $this->dokumen_model->get_vendor()->row();
+			
+			$data['type'] = $this->dokumen_model->get_dokumen_type();
+			$data['group'] = $this->dokumen_model->get_dokumen_group();
 
-		$this->load->view('view_vendor/header');
-		$this->load->view('view_vendor/upload_dokumen', $data);
-		$this->load->view('view_vendor/footer');
+			$this->load->view('view_vendor/header');
+			$this->load->view('view_vendor/upload_dokumen', $data);
+			$this->load->view('view_vendor/footer');
+		} else{
+			echo "<script> alert('Vendor sudah mengisi dokumen. Silahkan lanjut untuk submit data asset.'); window.location.href='".base_url()."index.php/vendor/display_asset'; </script>";
+		}
     }
     
     function unggah_dokumen(){

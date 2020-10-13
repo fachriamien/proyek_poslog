@@ -41,6 +41,12 @@ class dokumen_model extends CI_Model
         return $tampil;
     }
 
+    function get_validate_registed_or_not($vendor_id){
+        $id = $vendor_id->vendor_id;
+		$query = $this->db->query("SELECT * FROM document WHERE vendor_id = '$id'");
+		return $query->num_rows();
+    }
+
     function save_dokumen(){
         $config['upload_path']          = '././assets/upload/';
 		$config['allowed_types']        = 'pdf|png';
