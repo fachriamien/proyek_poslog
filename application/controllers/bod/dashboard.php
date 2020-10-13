@@ -26,12 +26,34 @@ class dashboard extends CI_Controller
 
 	function toDataVendor($id){
 
-		$dataVendor['vendor'] = $this->model_bod->getDetailVendor($id);
+		$data['vendor'] = $this->model_bod->getDetailVendor($id);
+		$data['pic'] = $this->model_bod->getVendorPIC($id);
 
 		$this->load->view('view_bod/header');
-		$this->load->view('view_bod/data_vendor', $dataVendor);
+		$this->load->view('view_bod/data_vendor', $data);
 		$this->load->view('view_bod/footer');
 	}
+
+	function toBerkasVendor($id){
+		$data['hasil'] = $this->model_bod->get_vendor($id);
+        $data['type'] = $this->model_bod->get_dokumen_type();
+		$data['group'] = $this->model_bod->get_dokumen_group();
+		$data['dokumen'] = $this->model_bod->getDokumen($id);
+
+		$this->load->view('view_bod/header');
+		$this->load->view('view_bod/berkas_vendor', $data);
+		$this->load->view('view_bod/footer');
+	}
+
+	function viewPDF($pdf_file){
+		$this->load->helper('download');
+		$path = file_get_contents(base_url()."C:/xampp/htdocs/proyek_poslog/assets/upload/".$filename); // get file name
+		$name = "sample_file.pdf"; // new name for your file
+		force_download($name,$path);
+	}
+
+	
+
 
 }
 

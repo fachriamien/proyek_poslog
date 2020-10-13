@@ -1,4 +1,3 @@
-<!-- Breadcome start-->
 <div class="breadcome-area mg-b-30 small-dn">
     <div class="container-fluid">
         <div class="row">
@@ -17,7 +16,7 @@
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Verifikasi Data vendor</span>
+                                <li><span class="bread-blod">Verifikasi Data</span>
                                 </li>
                             </ul>
                         </div>
@@ -52,11 +51,11 @@
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                         <label class="login2 pull-right pull-right-pro">Nama
-                                                            Perusahaan<span style="color: red">*</span></label>
+                                                            Perusahaan</label>
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <input required placeholder="Nama Perusahaan"
-                                                            name="nama_perusahaan" disabled="" value="<?php echo $vendor['vendor_name'] ?>" id="nama_perusahaan" type="text"
+                                                            name="nama_perusahaan" readonly value="<?php echo $vendor['vendor_name'] ?>" id="nama_perusahaan" type="text"
                                                             class="form-control" />
                                                     </div>
                                                 </div>
@@ -64,17 +63,16 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
-                                                        <label class="login2 pull-right pull-right-pro">Alamat<span
-                                                                style="color: red">*</span></label>
+                                                        <label class="login2 pull-right pull-right-pro">Alamat</label>
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <input required id="alamat_lengkap" disabled=""  value="<?php echo $vendor['address']?>" name="alamat_lengkap"
+                                                        <input required id="alamat_lengkap" readonly  value="<?php echo $vendor['address']?>" name="alamat_lengkap"
                                                             placeholder="Jalan, RT/RW, Blok" type="text"
                                                             class="form-control" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group-inner">
+                                            <!-- <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                     </div>
@@ -128,13 +126,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
+                                                            <label class="login2 pull-right pull-right-pro">Kodepos
+                                                                </label>
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <input id="kode_pos" name="kode_pos" disabled="" value="<?php echo $vendor['postcode'] ?>" required
+                                                        <input id="kode_pos" name="kode_pos" readonly value="<?php echo $vendor['postcode'] ?>" required
                                                             placeholder="Kode Pos" type="text" class="form-control" />
                                                     </div>
                                                 </div>
@@ -157,7 +157,7 @@
                                                     <div class="col-lg-3">
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <input id="fax" name="fax"disabled="" value="<?php echo $vendor['vendor_fax'] ?>" placeholder="Fax" type="text"
+                                                        <input id="fax" name="fax"readonly value="<?php echo $vendor['vendor_fax'] ?>" placeholder="Fax" type="text"
                                                             class="form-control" />
                                                     </div>
                                                 </div>
@@ -165,23 +165,23 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
-                                                        <label class="login2 pull-right pull-right-pro">Email Perusahaan<span style="color: red">*</span></label>
+                                                        <label class="login2 pull-right pull-right-pro">Email Perusahaan</label>
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <input id="vendor_email" disabled="" value="<?php echo $vendor['vendor_email']?>" name="vendor_email" required
+                                                        <input id="vendor_email" readonly value="<?php echo $vendor['vendor_email']?>" name="vendor_email" required
                                                             placeholder="Email Perusahaan" type="email" class="form-control" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group-inner">
+                                            <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                         <label class="login2 pull-right pull-right-pro">Person In Charge
-                                                            (PIC)<span style="color: red">*</span></label>
+                                                            (PIC)</label>
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <input id="pic_nama" name="pic_nama" required
-                                                            placeholder="Nama PIC" type="text" class="form-control" />
+                                                            placeholder="Nama PIC" type="text" readonly     value="<?php echo $pic['pic_name']?>" class="form-control" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,11 +192,9 @@
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
-                                                            <select required id="pic_gender"
+                                                            <select readonly required id="pic_gender"
                                                                 class="form-control custom-select-value" name="pic_gender">
-                                                                <option value="">--- Pilih Jenis Kelamin ---</option>
-                                                                <option value="1">Laki-Laki</option>
-                                                                <option value="2">Perempuan</option>
+                                                                <option><?php echo $pic['pic_gender']; ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -207,7 +205,7 @@
                                                     <div class="col-lg-3">
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <input id="pic_nohp" name="pic_nohp" required
+                                                        <input id="pic_nohp" name="pic_nohp" required readonly value="<?php echo $pic['pic_phone']?>"
                                                             placeholder="No HP (WA) PIC" type="text" class="form-control" />
                                                     </div>
                                                 </div>
@@ -217,11 +215,11 @@
                                                     <div class="col-lg-3">
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <input id="pic_email" name="pic_email" required
+                                                        <input id="pic_email" name="pic_email" required readonly value="<?php echo $pic['pic_email']?>"
                                                             placeholder="Email PIC" type="email" class="form-control" />
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
@@ -230,7 +228,7 @@
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <input id="website" name="website"
-                                                            placeholder="Website Perusahaan (Optional)" disabled="" value="<?php echo $vendor['vendor_email'] ?>" type="text"
+                                                            placeholder="Website Perusahaan (Optional)" readonly value="<?php echo $vendor['vendor_email'] ?>" type="text"
                                                             class="form-control" />
                                                     </div>
                                                 </div>
@@ -239,13 +237,13 @@
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                         <label class="login2 pull-right pull-right-pro">Bidang Usaha
-                                                            (Utama)<span style="color: red">*</span></label>
+                                                            (Utama)</label>
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
                                                             <input id="business_field"
                                                                 class="form-control custom-select-value"
-                                                                name="business_field" disabled="" value="<?php echo $vendor['business_field_name']?>">
+                                                                name="business_field" readonly value="<?php echo $vendor['business_field_name']?>">
                                                             </select>
                                                         </div>
                                                     </div>
@@ -257,9 +255,10 @@
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
-                                                            <select id="category_business_field"
+                                                            <select readonly id="category_business_field"
                                                                 class="form-control custom-select-value"
                                                                 name="category_business_field">
+                                                                <option><?php echo $vendor['category_name'] ?></option> 
                                                             </select>
                                                         </div>
                                                     </div>
@@ -268,12 +267,11 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3">
-                                                        <label class="login2 pull-right pull-right-pro">Klasifikasi<span
-                                                                style="color: red">*</span></label>
+                                                        <label class="login2 pull-right pull-right-pro">Klasifikasi</label>
                                                     </div>
                                                     <div class="col-lg-9">
                                                         <div class="form-select-list">
-                                                            <input disabled="" value="<?php echo $vendor['class_name']?>" id="classification"
+                                                            <input readonly value="<?php echo $vendor['class_name']?>" id="classification"
                                                                 class="form-control custom-select-value"
                                                                 name="classification">
                                                             </select>
@@ -285,25 +283,26 @@
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                         <label class="login2 pull-right pull-right-pro">Deskripsi Umum
-                                                            Perusahaan<span style="color: red">*</span></label>
+                                                            Perusahaan</label>
                                                     </div>
                                                     <div class="col-lg-9">
-                                                        <textarea id="deskripsi_umum" name="deskripsi_umum"
-                                                            placeholder="Tuliskan Deskripsi Umum Perusahaan" type="text"
-                                                            class="form-control" disabled="" value="<?php echo $vendor['vendor_desc']?>"></textarea>
+                                                        <input id="deskripsi_umum" name="deskripsi_umum"
+                                                            type="text"
+                                                            class="form-control" readonly value="<?php echo $vendor['vendor_desc']?>"></input>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group-inner">
                                                 <div class="login-btn-inner">
                                                     <div class="row">
                                                         <div class="col-lg-3"></div>
                                                         <div class="col-lg-9">
                                                             <div class="login-horizental cancel-wp pull-left">
-                                                                <input name="submit" id="submit"
-                                                                    class="btn btn-sm btn-primary login-submit-cs"
-                                                                    type="submit" text="Submit" />
+                                                                        <ul class="pager">
+                                                                        <li><a href="<?php echo base_url("index.php/bod/dashboard/toBerkasVendor/"). $vendor['vendor_id']?>" 
+                                                                        style="background-color: White; ">Halaman Berikutnya 
+                                                                         </a> </li>
+                                                                        </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -322,7 +321,7 @@
 </div>
 <!-- Basic Form End-->
 
-<?php if ($this->session->flashdata('success')): ?>
+<!-- <?php if ($this->session->flashdata('success')): ?>
 <script>
 Swal.fire({
     title: "Success!",
@@ -335,4 +334,4 @@ Swal.fire({
     }
 });
 </script>
-<?php endif; ?>
+<?php endif; ?> -->
