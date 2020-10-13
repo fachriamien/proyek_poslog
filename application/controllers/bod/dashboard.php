@@ -4,7 +4,8 @@ class dashboard extends CI_Controller
 	function __construct(){
 		parent::__construct();
 		$this->load->model('models_bod/model_bod');
-		
+		$this->load->helper(array('url','download'));		
+
 		if($this->session->userdata('status_login') != "4V050oXlAMwyba8kkr5Q"){
 			redirect(base_url("index.php/login"));
 		}
@@ -46,24 +47,7 @@ class dashboard extends CI_Controller
 	}
 
 	function viewPDF($pdf_file){
-		$this->load->helper('download');
-		// $path = file_get_contents(base_url()."C:/xampp/htdocs/proyek_poslog/assets/upload/".$pdf_file); // get file name
-		// $name = "$pdf_file"; // new name for your file
-		// force_download($name, $path);
-
-		// if ($fileName) {
-			$file = realpath ( "C:\xampp\htdocs\proyek_poslog\assets\upload" ) . "\\" . $pdf_file;
-			// check file exists    
-			if (file_exists ( $file )) {
-			 // get file content
-			 $data = file_get_contents ( $file );
-			 //force download
-			 force_download ( $fileName, $data );
-			} else {
-			 // Redirect to base url
-			//  redirect ( base_url () );
-			}
-		//    }
+		force_download("'C:\xampp\htdocs\proyek_poslog\assets\upload\'. $pdf_file",NULL);
 	}
 
 	function verifikasiVendor($id){

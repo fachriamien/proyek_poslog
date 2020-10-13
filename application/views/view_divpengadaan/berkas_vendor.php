@@ -19,7 +19,7 @@
                                 </li>
                                 <li><a href="#">Verifikasi Data</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><a href="#">Tampilan Dokumen</a> 
+                                <li><span class="bread-blod">Dokumen Vendor</span>
                                 </li>
                             </ul>
                         </div>
