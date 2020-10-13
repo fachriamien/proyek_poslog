@@ -47,7 +47,7 @@ class displayasset_model extends CI_Model {
 
   public function uploadImage() {
         $config['upload_path'] = './assets/upload/img_displayasset';
-        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['allowed_types'] = 'jpg|png|jpeg|pdf';
         $config['max_size'] = 8192;
         $config['encrypt_name'] = true;  
 

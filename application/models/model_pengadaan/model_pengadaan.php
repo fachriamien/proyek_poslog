@@ -1,9 +1,9 @@
 <?php
 
-class model_bod extends CI_Model
+class model_pengadaan extends CI_Model
 {
     public function getDataVendor(){
-       $query = $this->db->query("SELECT * from vendor where vendor_status = '4'");
+       $query = $this->db->query("SELECT * from vendor where vendor_status = '3'");
        return $query->result_array();
     }
 

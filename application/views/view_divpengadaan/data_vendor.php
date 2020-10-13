@@ -299,7 +299,7 @@
                                                         <div class="col-lg-9">
                                                             <div class="login-horizental cancel-wp pull-left">
                                                                         <ul class="pager">
-                                                                        <li><a href="<?php echo base_url("index.php/bod/dashboard/toBerkasVendor/"). $vendor['vendor_id']?>" 
+                                                                        <li><a href="<?php echo base_url("index.php/divpengadaan/dashboard/toBerkasVendor/"). $vendor['vendor_id']?>" 
                                                                         style="background-color: White; ">Halaman Berikutnya 
                                                                          </a> </li>
                                                                         </ul>

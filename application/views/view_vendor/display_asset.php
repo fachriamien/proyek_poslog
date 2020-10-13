@@ -95,8 +95,8 @@
                                                                         <td><?= $k['kendaraan_status'] ?></td>
                                                                         <td><?= $k['kendaraan_services_terakhir'] ?></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-custon-rounded-four btn-warning" data-toggle="modal" data-target="#neweditKendaraanAsset<?= $k['kendaraan_id'] ?>">edit</a>
-                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_kendaraan/'.$k['kendaraan_id']); ?>" class="btn btn-custon-rounded-four btn-danger">delete</a>
+                                                                            <a href="" class="btn btn-custon-rounded-four btn-sm btn-warning" data-toggle="modal" data-target="#neweditKendaraanAsset<?= $k['kendaraan_id'] ?>">edit</a>
+                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_kendaraan/'.$k['kendaraan_id']); ?>" class="btn btn-custon-rounded-four btn-sm btn-danger">delete</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $i++; ?>
@@ -123,7 +123,7 @@
                                                         <div class="modal-body">
                                                             
                                                             <div class="form-group">
-                                                                <select name="vendor_id" id="vendor_id" class="form-control">
+                                                                <select name="vendor_id" id="vendor_id" class="form-control" required>
                                                                     <option value="" selected="" disabled>Select Vendor</option>
                                                                     <?php foreach($vendor as $v) : ?>
                                                                     <option value="<?= $v['vendor_id']; ?>"><?= $v['vendor_name']; ?></option>
@@ -316,8 +316,8 @@
                                                                         <td><?= $g['general_qty'] ?></td>
                                                                         <td><?= $g['general_status_kepemilikan'] ?></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-custon-rounded-four btn-warning" data-toggle="modal" data-target="#neweditGeneralAsset<?= $g['general_id'] ?>">edit</a>
-                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_generalasset/'.$g['general_id']); ?>" class="btn btn-custon-rounded-four btn-danger">delete</a>
+                                                                            <a href="" class="btn btn-custon-rounded-four btn-sm btn-warning" data-toggle="modal" data-target="#neweditGeneralAsset<?= $g['general_id'] ?>">edit</a>
+                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_generalasset/'.$g['general_id']); ?>" class="btn btn-custon-rounded-four btn-sm btn-danger">delete</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $i++; ?>
@@ -344,7 +344,7 @@
                                                 <div class="modal-body">
 
                                                     <div class="form-group">
-                                                        <select name="vendor_id" id="vendor_id" class="form-control">
+                                                        <select name="vendor_id" id="vendor_id" class="form-control" required>
                                                             <option value="" selected="" disabled>Select Vendor</option>
                                                             <?php foreach($vendor as $v) : ?>
                                                             <option value="<?= $v['vendor_id']; ?>"><?= $v['vendor_name']; ?></option>
@@ -493,10 +493,11 @@
                                                                         <td><?= $s['sertifikasi_jenis'] ?></td>
                                                                         <td><?= $s['sertifikasi_tahun'] ?></td>
                                                                         <td><?= $s['sertifikasi_nomor'] ?></td>
-                                                                        <td class="text-center"><img src="<?= sprintf("http://localhost/proyek_poslog/assets/upload/img_displayasset/%s", $s['sertifikasi_file']); ?>" width="66px" height="64px"></td>
+                                                                        <!-- <td class="text-center"><img src="<?= sprintf("http://localhost/proyek_poslog/assets/upload/img_displayasset/%s", $s['sertifikasi_file']); ?>" width="66px" height="64px"></td> -->
+                                                                        <td><a href="<?= base_url('/assets/upload/img_displayasset/'.$s['sertifikasi_file']); ?>" target="_blank" class="btn btn-custon-rounded-four btn-sm btn-success">lihat file</a></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-custon-rounded-four btn-warning" data-toggle="modal" data-target="#neweditSertifikasiAsset<?= $s['sertifikasi_id'] ?>">edit</a>
-                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_sertifikasiasset/'.$s['sertifikasi_id']); ?>" class="btn btn-custon-rounded-four btn-danger">delete</a>
+                                                                            <a href="" class="btn btn-custon-rounded-four btn-sm btn-warning" data-toggle="modal" data-target="#neweditSertifikasiAsset<?= $s['sertifikasi_id'] ?>">edit</a>
+                                                                            <a href="<?= base_url('index.php/vendor/display_asset/delete_sertifikasiasset/'.$s['sertifikasi_id']); ?>" class="btn btn-custon-rounded-four btn-sm btn-danger">delete</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $i++; ?>
@@ -524,7 +525,7 @@
                                                     <div class="modal-body">
 
                                                         <div class="form-group">
-                                                            <select name="vendor_id" id="vendor_id" class="form-control">
+                                                            <select name="vendor_id" id="vendor_id" class="form-control" required>
                                                                 <option value="" selected="" disabled>Select Vendor</option>
                                                                 <?php foreach($vendor as $v) : ?>
                                                                 <option value="<?= $v['vendor_id']; ?>"><?= $v['vendor_name']; ?></option>
@@ -548,7 +549,7 @@
 
                                                         <div class=" custom-file">
                                                         <label class="custom-file-label" for="customFile">Choose file</label>
-                                                            <input type="file" class="custom-file-input" id="sertifikasi_file" name="sertifikasi_file" placeholder="Image">
+                                                            <input type="file" class="custom-file-input" id="sertifikasi_file" name="sertifikasi_file" placeholder="" required>
                                                         </div>
 
                                                     </div>
@@ -604,7 +605,7 @@
 
                                                         <div class=" custom-file">
                                                         <label class="custom-file-label" for="customFile">Choose file</label>
-                                                            <input type="file" class="custom-file-input" id="sertifikasi_file" name="sertifikasi_file" placeholder="Image">
+                                                            <input type="file" class="custom-file-input" id="sertifikasi_file" name="sertifikasi_file" placeholder="" required>
                                                         </div>
                                                     
                                                     </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PT Pos Logistik Indonesia | Divisi Pengadaan</title>
+    <title>PT Pos Logistik Indonesia | BOD</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -68,11 +68,11 @@
                 <div class="left-custom-menu-adp-wrap">
                     <ul class="nav navbar-nav left-sidebar-menu-pro">
                         <li class="nav-item">
-                            <a href="#" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Dashboard</span></a>
+                            <a href="<?php echo base_url()?>index.php/divpengadaan/dashboard " role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Dashboard</span></a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-check-square-o"></i> <span class="mini-dn">Verifikasi Vendor</span></a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?php echo base_url() ?>index.php/login/logout" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-power-off"></i> <span class="mini-dn">Logout</span></a>
                         </li>
@@ -101,7 +101,7 @@
             </div>
             <!-- Header top area end-->
             <!-- Breadcome start-->
-            <div class="breadcome-area mg-b-30 small-dn">
+            <!-- <div class="breadcome-area mg-b-30 small-dn">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Breadcome End-->
             <!-- Mobile Menu start -->
             <div class="mobile-menu-area">
@@ -138,8 +138,8 @@
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul class="mobile-menu-nav">
-                                        <li><a href="#">Dashboard</a></li>
-                                        <li><a href="#">Verifikasi Vendor</a></li>
+                                        <li><a href="<?php echo base_url()?> index.php/divpengadaan/dashboard">Dashboard</a></li>
+                                        <!-- <li><a href="#">Verifikasi Vendor</a></li> -->
                                         <li><a href="#">Logout</a></li>
 
                                     </ul>
@@ -149,7 +149,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile Menu end -->
             <!-- Breadcome start-->
             <div class="breadcome-area mg-b-30 des-none">
                 <div class="container-fluid">
@@ -179,4 +178,35 @@
                     </div>
                 </div>
             </div>
+            <!-- Breadcome End-->
+            <!-- Mobile Menu end -->
+            <!-- Breadcome start-->
+            <!-- <div class="breadcome-area mg-b-30 des-none">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-list map-mg-t-40-gl shadow-reset">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="breadcome-heading">
+                                            <form role="search" class="">
+												<input type="text" placeholder="Search..." class="form-control">
+												<a href=""><i class="fa fa-search"></i></a>
+											</form>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <ul class="breadcome-menu">
+                                            <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                            </li>
+                                            <li><span class="bread-blod">Dashboard</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
             <!-- Breadcome End-->
