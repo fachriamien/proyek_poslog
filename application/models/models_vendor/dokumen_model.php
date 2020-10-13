@@ -59,10 +59,14 @@ class dokumen_model extends CI_Model
         $doc_type_id = $this->input->post('doc_type_id');
 		if (is_array($doc_type_id) || is_object($doc_type_id))
 		{
+            $i = 0;
+            $nama_file = "";
 			foreach ($doc_type_id as $row) {
-                $i = 0;
+                
                 if(!empty($_FILES['dokumen']['name'][$i])){
- 
+                    // if($_FILES['dokumen']['name'][$i]== $nama_file){
+                    //     continue;
+                    // }
                     $_FILES['file']['name'] = $_FILES['dokumen']['name'][$i];
                     $_FILES['file']['type'] = $_FILES['dokumen']['type'][$i];
                     $_FILES['file']['tmp_name'] = $_FILES['dokumen']['tmp_name'][$i];

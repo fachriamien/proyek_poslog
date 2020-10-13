@@ -66,10 +66,22 @@
                                                         <?php
                                                         } 
                                                 } else if ($hasil->vendor_status == 4){
-                                                ?>
-                                                    <h3>STATUS : DALAM PROSES </h3></br>
-                                                    <label>Mohon untuk menunggu hasil verifikasi</label>
-                                                <?php
+                                                    if($hasil->vendor_remark == "PERBAIKAN"){
+                                                        ?>
+                                                            <h3>STATUS : <?php echo $hasil->vendor_remark; ?></h3>
+                                                            <label>Mohon untuk melengkapi kekurangan data yang kami butuhkan</label>
+                                                            </br>
+                                                            <a href="<?php echo base_url() ?>index.php/vendor/dashboard/unggah_perbaikan/<?php echo $hasil->vendor_id;?>" 
+                                                            class="btn btn-sm btn-primary login-submit-cs"
+                                                                        >Click Here </a>
+                                                        <?php
+                                                        } else {
+                                                            ?>
+                                                                <h3>STATUS : DALAM PROSES </h3></br>
+                                                                <label>Mohon untuk menunggu hasil verifikasi</label>
+                                                            <?php
+                                                        }
+                                                
                                                 } else if($hasil->vendor_status == 5){
                                                     if ($hasil->vendor_remark == "PERBAIKAN"){
                                                         ?>

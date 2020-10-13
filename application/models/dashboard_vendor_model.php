@@ -38,8 +38,9 @@ class dashboard_vendor_model extends CI_Model
         $doc_type_id = $this->input->post('doc_type_id');
 		if (is_array($doc_type_id) || is_object($doc_type_id))
 		{
+            $i = 0;
 			foreach ($doc_type_id as $row) {
-                $i = 0;
+               
                 if(!empty($_FILES['dokumen']['name'][$i])){
  
                     $_FILES['file']['name'] = $_FILES['dokumen']['name'][$i];
