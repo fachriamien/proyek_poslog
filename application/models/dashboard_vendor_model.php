@@ -65,7 +65,7 @@ class dashboard_vendor_model extends CI_Model
                 }
 			}
         }
-        $update = array('vendor_remark'=>"BELUM TERVERIFIKASI");
+        $update = array('vendor_remark'=>"BELUM TERVERIFIKASI", 'vendor_status'=>'3');
         $this->db->where('vendor_id', $this->input->post('vendor_id'));
 		$this->db->update('vendor', $update);
     }
