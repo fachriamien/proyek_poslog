@@ -47,9 +47,31 @@ class dashboard extends CI_Controller
 
 	function viewPDF($pdf_file){
 		$this->load->helper('download');
-		$path = file_get_contents(base_url()."C:/xampp/htdocs/proyek_poslog/assets/upload/".$filename); // get file name
-		$name = "sample_file.pdf"; // new name for your file
-		force_download($name,$path);
+		// $path = file_get_contents(base_url()."C:/xampp/htdocs/proyek_poslog/assets/upload/".$pdf_file); // get file name
+		// $name = "$pdf_file"; // new name for your file
+		// force_download($name, $path);
+
+		// if ($fileName) {
+			$file = realpath ( "C:\xampp\htdocs\proyek_poslog\assets\upload" ) . "\\" . $pdf_file;
+			// check file exists    
+			if (file_exists ( $file )) {
+			 // get file content
+			 $data = file_get_contents ( $file );
+			 //force download
+			 force_download ( $fileName, $data );
+			} else {
+			 // Redirect to base url
+			//  redirect ( base_url () );
+			}
+		//    }
+	}
+
+	function verifikasiVendor($id){
+		$data['hasil'] = $this->model_bod->get_vendor($id);
+
+		$updateData = array('vendor_remark' => "TERVERIFIKASI", 'vendor_status' => '4');
+		$data['vendor'] = $this->model_bod->verifikasiVendor($id, $updateData);
+		redirect(base_url('index.php/bod/dashboard'));
 	}
 
 	

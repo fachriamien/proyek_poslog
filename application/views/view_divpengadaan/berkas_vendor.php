@@ -51,7 +51,7 @@
                                     <!-- <?php
                                         echo form_open_multipart('vendor/upload_dokumen/unggah_dokumen/');
                                     ?> -->
-                                        <form action="<?php echo base_url("index.php/bod/dashboard/verifikasiVendor/").$hasil['vendor_id'] ?>">
+                                        <form action="<?php echo base_url("index.php/divpengadaan/dashboard/verifikasiVendor/").$hasil['vendor_id'] ?>">
                                             <div class="form-group-inner">
                                             
                                                 <?php
